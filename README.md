@@ -166,3 +166,9 @@ docker network rm peer-test
 
 
 Good luck! 
+
+## Verified local implementation
+
+The multi-stage image and both Compose services run successfully. Both services become healthy; `/health` returns `{"status":"ok"}` and `/tasks` returns the seeded row. Run commands with `docker compose -p cedt-docker-assignment` to isolate this lab from existing projects.
+
+The supplied `app/` files are unchanged. The Dockerfile retains the required `node:20.11-slim` base and patches the image by installing fixed Debian packages and `proxy-addr@2.0.8`. Runtime npm and Yarn are removed because the application starts directly with Node. Trivy reports zero fixable CRITICAL findings using the workshop's `--severity CRITICAL --ignore-unfixed` policy. This does not claim that all severity levels or all unfixed vulnerabilities are absent.
